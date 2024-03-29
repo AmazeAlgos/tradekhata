@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-impoer subprocess
+import subprocess
 subprocess.check_call([sys.executable, "-m", "pip", "install", "openpyxl"])
 
 def calculate_net(row):
