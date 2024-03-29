@@ -106,7 +106,7 @@ def process_data(df):
 
 
 def main():
-    st.title('Trade Log Analysis')
+    st.title('Trade Log Analysis For Zerodha Equities')
 
 
     # File upload
