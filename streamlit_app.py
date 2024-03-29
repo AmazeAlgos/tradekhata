@@ -114,13 +114,7 @@ def main():
         if uploaded_file.type == 'text/csv':
             df = pd.read_csv(uploaded_file)
         elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-            # df = pd.read_excel(uploaded_file, skiprows=lambda x: x == 0 or pd.isnull(x))
-            header_row = None
-            for i, row in enumerate(pd.read_excel(uploaded_file, header=None).values):
-                if not all(pd.isnull(cell) for cell in row):
-                    header_row = i
-                    break
-            df = pd.read_excel(uploaded_file, header=header_row)
+            df = pd.read_excel(uploaded_file, header=14)
         # Drop rows with all NaN values
         df.dropna(axis=0, how='all', inplace=True)
         # Process the data
