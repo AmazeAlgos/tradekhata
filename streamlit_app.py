@@ -14,7 +14,11 @@ def calculate_net(row):
 
 def process_data(df):
     print(df)
-    df=df[(df['Exchange']=='NSE')|(df['Exchange']=='BSE')]
+    try:
+        df=df[(df['Exchange']=='NSE')|(df['Exchange']=='BSE')]
+    except:
+        df=df[(df['exchange']=='NSE')|(df['exchange']=='BSE')]
+        
     buy_data = df[df['Trade Type'] == 'buy']
     total_buy_qty = buy_data.groupby('Symbol')['Quantity'].sum()
     total_buy_value = (buy_data['Quantity'] * buy_data['Price']).groupby(buy_data['Symbol']).sum()
