@@ -118,7 +118,7 @@ def process_data(df):
         # Create a DataFrame for the result
         df = pd.DataFrame({
             'symbol': df['symbol'].unique(),
-            'Exchange': df.groupby('symbol')['Exchange'].first(),
+            'Exchange': df.groupby('symbol')['exchange'].first(),
             'Total Buy Quantity': total_buy_qty.reindex(df['symbol'].unique(), fill_value=0).values,
             'Average Buy Price': average_buy_price.reindex(df['symbol'].unique(), fill_value=0).values,
             'Total Sell Quantity': total_sell_qty.reindex(df['symbol'].unique(), fill_value=0).values,
