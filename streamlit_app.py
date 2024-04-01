@@ -16,15 +16,19 @@ def process_data(df):
     print(df)
     try:
         df=df[(df['Exchange']=='NSE')|(df['Exchange']=='BSE')]
+        buy_data = df[df['Trade Type'] == 'buy']
+        sell_data = df[df['Trade Type'] == 'sell']
     except:
         df=df[(df['exchange']=='NSE')|(df['exchange']=='BSE')]
+        buy_data = df[df['trade_type'] == 'buy']
+        sell_data = df[df['trade_type'] == 'sell']
         
-    buy_data = df[df['Trade Type'] == 'buy']
+    
     total_buy_qty = buy_data.groupby('Symbol')['Quantity'].sum()
     total_buy_value = (buy_data['Quantity'] * buy_data['Price']).groupby(buy_data['Symbol']).sum()
 
     # Calculate total sell quantity and total sell value for each symbol
-    sell_data = df[df['Trade Type'] == 'sell']
+    
     total_sell_qty = sell_data.groupby('Symbol')['Quantity'].sum()
     total_sell_value = (sell_data['Quantity'] * sell_data['Price']).groupby(sell_data['Symbol']).sum()
 
