@@ -97,6 +97,7 @@ def process_data(df):
         - Symbol with Max PNL: {max_pnl_symbol}
         - Symbol with Min PNL: {min_pnl_symbol}
         """
+        return report
 
     except:
         df=df[(df['exchange']=='NSE')|(df['exchange']=='BSE')]
