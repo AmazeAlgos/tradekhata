@@ -104,6 +104,8 @@ def process_data(df):
 
     except:
         df=df[(df['exchange']=='NSE')|(df['exchange']=='BSE')]
+        start_date=df['trade_date'].iloc[0]
+        end_date = df['trade_date'].iloc[-1]
         buy_data = df[df['trade_type'] == 'buy']
         sell_data = df[df['trade_type'] == 'sell']
         total_buy_qty = buy_data.groupby('symbol')['quantity'].sum()
@@ -179,6 +181,8 @@ def process_data(df):
         # Format the report
         report = f"""
         Key Metrics:
+        - Start: {start_date}
+        - End: {end_date}
         - Wins: {wins:.2f}
         - losses: {losses:.2f}
         - Win %: {win_pct:.2f}
