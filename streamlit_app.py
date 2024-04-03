@@ -16,6 +16,9 @@ def process_data(df):
     print(df)
     try:
         df=df[(df['Exchange']=='NSE')|(df['Exchange']=='BSE')]
+        start_date=df['Trade Date'].iloc[0]
+        end_date = df['Trade Date'].iloc[-1]
+
         buy_data = df[df['Trade Type'] == 'buy']
         sell_data = df[df['Trade Type'] == 'sell']
         total_buy_qty = buy_data.groupby('Symbol')['Quantity'].sum()
