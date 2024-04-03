@@ -88,6 +88,8 @@ def process_data(df):
         # Format the report
         report = f"""
         Key Metrics:
+        - Start: {start_date}
+        - End: {end_date}
         - Wins: {wins:.2f}
         - losses: {losses:.2f}
         - Win %: {win_pct:.2f}
